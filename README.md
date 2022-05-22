@@ -5,6 +5,8 @@ silica-based network system (nsx) as documented in the paper of Zhang and Kob (s
 The configuration (in xyz format) to be analyzed is by default 3d-periodic, but non-periodic 
 configs can easily be adapted to this analysis. 
 
+particle types: 1->big; 2->small (bljm)  1->O; 2->Si; 3->Na (nsx)
+
 usage of the code:
 
 gfortran -o bljm.out 3d-structure-analysis-bljm.f90 && ./bljm.out sff1 11 1.5 2.5 0.05 0.2 2000 6 0.1
