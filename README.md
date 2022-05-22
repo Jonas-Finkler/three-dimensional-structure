@@ -1,11 +1,11 @@
 # three-dimensional-structure
 
-this fortran codes perform the 3d structural order analysis for a binary LJ mixture (bljm) and 
+the fortran code performs the 3d structural order analysis for a binary LJ mixture (bljm) or a 
 silica-based network system (nsx) as documented in the paper of Zhang and Kob (see ref at the end). 
 The configuration (in xyz format) to be analyzed is by default 3d-periodic, but non-periodic 
 configs can easily be adapted to this analysis. 
 
-particle types: 1->big; 2->small (bljm)  1->O; 2->Si; 3->Na (nsx)
+particle types in the xyz files: 1->big; 2->small (bljm)  1->O; 2->Si; 3->Na (nsx)
 
 usage of the code:
 
