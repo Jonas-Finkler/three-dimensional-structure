@@ -39,6 +39,11 @@ decompose the signal as seen from the density distribution by spherical harmonic
 for which different modes (l) catch different types of symmetries and order. the code 
 will write a dat file of r vs. S_rho.
 
+3) from density distribution to angular power spectrum:
+the bash script S_eta.sh enables decomposition of the signal on the sphere into 
+spherical harmonics by invoking the S_eta.f90 code. The density distribution can
+be the original one (which gives S_rho) and the normalized one (which gives S_eta).
+
 Reference: Zhang, Z., & Kob, W. (2020). Revealing the three-dimensional structure of liquids
 using four-point correlation functions. PNAS, 117(25), 14032-14037.
 
