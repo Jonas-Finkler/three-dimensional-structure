@@ -37,7 +37,7 @@
 !gfortran -o nsx.out 3d-structure-analysis-nsx.f90 && ./nsx.out sff1 22 2.5 5.5 0.05 0.5 2000 3 0.1
 !see below for the definition of each of the loaded parameters
 !
-!by Zhen Zhang, zhen.zhang1991@hotmail.com, May 22, 2022
+!by Zhen Zhang, zhen.zhang1991@hotmail.com, Jun 6, 2022
 !
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
@@ -108,7 +108,7 @@ program orderparameter
    read(args(6),'(f5.2)')delta  !0.5, define the layer [r-delta, r+delta] to be looked in practice
    read(args(7),'(i6)') n_fib  !nb of cells on the sphere for bining
    read(args(8),'(i3)') l_value  !the mode of SH to be calculated: 3 for SiO2, 6 for BLJM 
-   read(args(9),'(f5.3)')frac !fraction of the config to be analyzed (in case the config is large)
+   read(args(9),'(f6.4)')frac !fraction of the config to be analyzed (in case the config is large)
    
    !-----------------------------------------------------------------
    if(correlation=="21") then  !atyp2_atyp1
@@ -182,7 +182,6 @@ program orderparameter
   print*,"nb of Fibonacci lattices evenly distributed on sphere (for sff2):", n_fib
   goldenratio=(1 + 5**0.5)/2
   allocate(area_coordinate(n_fib,3),npoints(n_fib))
-  npoints=0
   
   !--canonical Fibonacci lattice----
   do i_fib=0, n_fib-1
@@ -202,7 +201,7 @@ program orderparameter
 !---------create files to write for sff1 analysis-----------
    write (seqstring,'(i0.2)') l_value 
    call system ('mkdir -p structure')  !create a folder to save the outputs
-   filename4='Srho-l'//trim(seqstring)//'-corr'//trim(correlation)//'.dat' !S_rho
+   filename4='Srho-l'//trim(seqstring)//'-nsx-corr'//trim(correlation)//'.dat' !S_rho
    !append to an existing file, otherwise "create and write" will overwrite the existing file.
    open(unit=1000+l_value,file='structure/'//filename4,action='write') !,position='append')  
   endif !ana=sff1
@@ -227,6 +226,7 @@ program orderparameter
  !------INITIALIZATION--------
   ntotal_atom=0; num_max=0;n_3d=0;num_total=0;num_totalPC=0;real_totalbond=0
   integral_real=0.0; integral_imag=0.0      
+  npoints=0
       
 !------start the algorithm for 3d structural order----
   print*,"-- starts loop over all ref atoms --" !i.e., atom #1 in the local coordinate system
@@ -367,7 +367,7 @@ program orderparameter
   if (ana=="sff2") then
   call system ('mkdir -p structure')
   write (seqstring,'(i0.2,f3.2)') int(rad),rad-int(rad)
-  filename0='spherical-density-r'//trim(seqstring)//'-corr'//trim(correlation)//'.xyz'
+  filename0='spherical-density-r'//trim(seqstring)//'-nsx-corr'//trim(correlation)//'.xyz'
   open(unit=600,file='structure/'//filename0,status='replace',action='write')
   
   write (600,*) n_area
