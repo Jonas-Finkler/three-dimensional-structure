@@ -375,7 +375,7 @@ program orderparameter
   d_area=4*pi/n_area  !area of each cell
   do i=1, n_area
    !type,x,y,z,rho_normalized
-   write (600,'(i2, 3f7.3,f9.5)') 1, area_coordinate(i,:),real(npoints(i))/sum(npoints(:))/d_area 
+   write (600,'(i2, 3f10.3,f13.5)') 1, area_coordinate(i,:),real(npoints(i))/sum(npoints(:))/d_area 
   enddo
   close(600)
   
