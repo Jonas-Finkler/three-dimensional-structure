@@ -182,6 +182,7 @@ program orderparameter
   print*,"nb of Fibonacci lattices evenly distributed on sphere (for sff2):", n_fib
   goldenratio=(1 + 5**0.5)/2
   allocate(area_coordinate(n_fib,3),npoints(n_fib))
+  npoints=0
   
   !--canonical Fibonacci lattice----
   do i_fib=0, n_fib-1
@@ -226,7 +227,6 @@ program orderparameter
  !------INITIALIZATION--------
   ntotal_atom=0; num_max=0;n_3d=0;num_total=0;num_totalPC=0;real_totalbond=0
   integral_real=0.0; integral_imag=0.0      
-  npoints=0
       
 !------start the algorithm for 3d structural order----
   print*,"-- starts loop over all ref atoms --" !i.e., atom #1 in the local coordinate system
