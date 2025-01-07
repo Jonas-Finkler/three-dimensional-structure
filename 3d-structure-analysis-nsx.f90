@@ -234,6 +234,9 @@ program orderparameter
     !------INITIALIZATION--------
     ntotal_atom=0; num_max=0;n_3d=0;num_total=0;num_totalPC=0;real_totalbond=0
     integral_real=0.0; integral_imag=0.0      
+    if (ana=="sff2") then   
+      npoints=0
+    end if
 
     !------start the algorithm for 3d structural order----
     print*,"-- starts loop over all ref atoms --" !i.e., atom #1 in the local coordinate system
@@ -247,9 +250,10 @@ program orderparameter
 
         n_neighbor=0 ; vect_neighbor=0  !array to save the list of nearest neighbors
         ! WARN: There are assumptions being made about lattice angles, max neighbor distances and cell sizes
-        do i0=d(1)-2,d(1)+2 !search 2 cells out in each direction
-          do j0=d(2)-2,d(2)+2
-            do k0=d(3)-2,d(3)+2
+        nn1=int(min1_gr/cellsize)+2  !outer_bound
+        do i0=d(1)-nn1,d(1)+nn1 !search 2 cells out in each direction
+          do j0=d(2)-nn1,d(2)+nn1
+            do k0=d(3)-nn1,d(3)+nn1
               d0=(/ i0, j0, k0 /)
               d1(:)=d0(:)-ncells(:)*floor(real(d0(:)-1)/ncells(:))  !PBC   3D
 
