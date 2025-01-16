@@ -103,13 +103,13 @@ program orderparameter
 
   ana=args(1) !sff1 or sff2
   correlation=args(2) !atyp_ref-atyp_target
-  read(args(3),'(f5.2)')minr !min value of r to be analyzed
-  read(args(4),'(f5.2)')maxr !max vale of r 
-  read(args(5),'(f5.2)')dr  !0.05, define the resoultion of the S_rho curve (only active for sff1)
-  read(args(6),'(f5.2)')delta  !0.5, define the layer [r-delta, r+delta] to be looked in practice
-  read(args(7),'(i6)') n_fib  !nb of cells on the sphere for bining
-  read(args(8),'(i3)') l_value  !the mode of SH to be calculated: 3 for SiO2, 6 for BLJM 
-  read(args(9),'(f6.4)')frac !fraction of the config to be analyzed (in case the config is large)
+  read(args(3), *) minr !min value of r to be analyzed
+  read(args(4), *) maxr !max vale of r 
+  read(args(5), *) dr  !0.05, define the resoultion of the S_rho curve (only active for sff1)
+  read(args(6), *) delta  !0.5, define the layer [r-delta, r+delta] to be looked in practice
+  read(args(7), *) n_fib  !nb of cells on the sphere for bining
+  read(args(8), *) l_value  !the mode of SH to be calculated: 3 for SiO2, 6 for BLJM 
+  read(args(9), *) frac !fraction of the config to be analyzed (in case the config is large)
 
   !-----------------------------------------------------------------
   !if(correlation=="21") then  !atyp2_atyp1
